@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  jupyter_lab:
+    container_name: jupyter_lab
+    build: .
+    ports:
+      - "8888:8888"
+    # environment:
+      #  - CHOWN_HOME=yes
+      #  - CHOWN_HOME_OPTS='-R'
+      #  - JUPYTER_ENABLE_LAB=yes
+    volumes:
+      - ./notebooks:/home/jovyan/notebooks
+      - ./jupyter_data:/home/jovyan
+    command: start.sh jupyter lab --LabApp.token=''
